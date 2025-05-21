@@ -1,4 +1,4 @@
-# WESL with a Bundler
+# WESL with a Bundler, Static Linking
 
 This example shows how you can use [WESL](https://wesl-lang.dev/) with Vite and Lygia.
 
@@ -11,8 +11,10 @@ The interesting bits are:
 
 - *app.wesl* - `import lygia::math::consts::PI;` - use lygia in shader code
 - *main.ts*
-  - `import appWesl from "../shaders/app.wesl?link";` - assemble shader bundles with vite
-  - `p const linked = await link(appWesl);` - link shaders at runtime
+  - `import appWgsl from "../shaders/app.wesl?static";` - link shader with vite
 
-This example links shaders dynamically at runtime (for maximum flexibility).
-The doc site also describes how to do [static linking](https://wesl-lang.dev/docs/JavaScript-Builds#controlling-static-bundler-builds).
+This example links shader code at build time using the WESL Vite plugin.
+Lygia shader functions are linked to the application shader during Vite bundling.
+
+No library is needed at runtime.
+`appWgsl` is a plain JavaScript string containing WGSL for use in WebGPU.
