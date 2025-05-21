@@ -1,6 +1,6 @@
 import viteWesl from "wesl-plugin/vite";
-import { linkBuildExtension } from "wesl-plugin";
+import { staticBuildExtension } from "wesl-plugin";
 
 export default {
-  plugins: [viteWesl({ extensions: [linkBuildExtension] })],
+  plugins: [viteWesl({ extensions: [staticBuildExtension] })],
 };
